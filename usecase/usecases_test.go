@@ -5,15 +5,9 @@ import (
 	"todo/adapter"
 	"todo/config"
 	"todo/types"
-
-	"go.mongodb.org/mongo-driver/mongo"
 )
 
-type AddLedgerEvent struct {
-	ledgerCollection *mongo.Collection
-}
-
-func TestAddAssets(t *testing.T) {
+func TestAddTodo(t *testing.T) {
 	var input = &types.TodoEvent{}
 
 	config := new(config.Config)
@@ -32,7 +26,7 @@ func TestAddAssets(t *testing.T) {
 	input.Description = "test description"
 	input.Status = false
 
-	err := usecase.Do(*input)
+	todoId, err := usecase.Do(*input)
 
 	if err != nil {
 		t.Error("Use case failed, Error: ", err)
@@ -40,10 +34,7 @@ func TestAddAssets(t *testing.T) {
 		return
 	}
 
-	t.Log("Test passed")
-
-}
-
-func TestHelloEmpty(t *testing.T) {
-
+	if todoId != "" {
+		t.Log("Test passed")
+	}
 }

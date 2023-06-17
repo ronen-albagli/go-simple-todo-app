@@ -49,11 +49,11 @@ func (c *Config) GetMongoTodoGateway() *mongo.Collection {
 		return nil
 	}
 
-	ledgerCollection := client.Database("Mongo").Collection("todo")
+	todoCollection := client.Database("Mongo").Collection("todo")
 
 	if err != nil {
 		return nil
 	}
 
-	return ledgerCollection
+	return todoCollection
 }

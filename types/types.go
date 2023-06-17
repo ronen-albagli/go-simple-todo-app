@@ -14,6 +14,7 @@ type TodoInput struct {
 
 type TodoEvent struct {
 	ID          primitive.ObjectID `bson:"_id,omitempty"`
+	TodoId      string             `bson:"todoId"`
 	Name        string             `bson:"name,omitempty"`
 	Description string             `bson:"description,omitempty"`
 	Status      bool               `bson:"status,omitempty"`
